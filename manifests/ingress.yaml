@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: main
+  namespace: homework
+  labels:
+    app.kubernetes.io/name: frontend
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: kube-lab.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
